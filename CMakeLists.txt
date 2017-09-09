@@ -12,3 +12,5 @@ add_executable(prob_1 src/1/main.c)
 add_executable(prob_2 src/2/main.c)
 
 add_executable(prob_3 src/3/main.c)
+
+add_executable(prob_4 src/4/main.c)
