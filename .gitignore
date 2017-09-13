@@ -7,3 +7,7 @@ cmake_install.cmake
 # Build output
 bin/
 lib/
+
+# CLion
+.idea/
+*.cbp
