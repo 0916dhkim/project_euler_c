@@ -23,3 +23,6 @@ add_executable(prob_5 src/5/main.c)
 target_link_libraries(prob_5 number_theory)
 
 add_executable(prob_6 src/6/main.c)
+
+add_executable(prob_7 src/7/main.c)
+target_link_libraries(prob_7 number_theory)
