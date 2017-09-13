@@ -2,16 +2,13 @@
 
 long gcd(long a, long b) {
 	long less = 0;
-	long greater = 0;
 	long gcd = 0;
 
 	// Determine which number is greater.
 	if (a < b) {
 		less = a;
-		greater = b;
 	} else {
 		less = b;
-		greater = a;
 	}
 
 	// Invert the smaller number if it is negative.
