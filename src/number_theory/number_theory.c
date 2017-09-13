@@ -37,7 +37,7 @@ long greatest_prime_factor(long num) {
 
 	// The greatest prime factor of a number cannot be
 	// greater than the square root of the number.
-	for (i = 2L; i * i < num; i++) {
+	for (i = 2L; i * i <= num; i++) {
 		if (num % i == 0L) {
 			// If i is a factor of num,
 			return greatest_prime_factor(num/i);
