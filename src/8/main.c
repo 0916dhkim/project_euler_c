@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <string.h> /* for strlen */
+
+char* GIVEN = "7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776657273330010533678812202354218097512545405947522435258490771167055601360483958644670632441572215539753697817977846174064955149290862569321978468622482839722413756570560574902614079729686524145351004748216637048440319989000889524345065854122758866688116427171479924442928230863465674813919123162824586178664583591245665294765456828489128831426076900422421902267105562632111110937054421750694165896040807198403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450";
+
+int main() {
+	size_t len = strlen(GIVEN);
+	size_t i;
+	long product = 1L;
+	long max;
+
+	// Calculate the product of the first thirteen digits.
+	for (i = 0; i < 13; i++) {
+		long digit = GIVEN[i] - '0';
+		product *= digit;
+	}
+
+	// Initialize max.
+	max = product;
+
+	// Iterate through the given string.
+	for (i = 13; i < len; i++) {
+		// Read the given string one digit at a time starting from 14th digit.
+		// Save the first digit of current 13 digits in old_digit,
+		// and save the following digit in new_digit.
+		long old_digit = GIVEN[i - 13] - '0';
+		long new_digit = GIVEN[i] - '0';
+
+		if (old_digit != 0L) {
+			// If old_digit is not 0,
+			// the product of new 13 digits is
+			// the previous product divided by old digit multiplied by new digit.
+			product = product * new_digit / old_digit;
+		} else {
+			// If old_digit is 0,
+			// calculate the new product again.
+			product = 1L;
+			size_t j;
+			for (j = i - 12; j <= i; j++) {
+				long temp_digit = GIVEN[j] - '0';
+				product *= temp_digit;
+			}
+		}
+
+		if (product > max) {
+			// Compare the new product with current max.
+			max = product;
+		}
+	}
+
+	printf("The greatest product of 13 digits is %ld\n", max);
+}
