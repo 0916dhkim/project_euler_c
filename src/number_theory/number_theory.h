@@ -9,4 +9,6 @@ long lcm(long, long);
 
 bool is_prime(long);
 
+void factor(long, int*, int);
+
 #endif // NUMBER_THEORY_H

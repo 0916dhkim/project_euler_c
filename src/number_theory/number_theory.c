@@ -58,3 +58,50 @@ bool is_prime(long num) {
 		return false;
 	}
 }
+
+void factor(long num, int *output_arr, int num_prime) {
+	static long primes[1000000];
+	static int known = -1;
+
+	// Use memoization for the first 1 million prime numbers.
+	int i;
+	for (i = 0; i < num_prime && i < 1000000; i++) {
+		if (i > known) {
+			// If i'th prime number is not known,
+			// find it.
+			if (i == 0) {
+				primes[0] = 2L;
+				known = 0;
+			} else {
+				int j = known;
+				while (j != i) {
+					long k = primes[j] + 1L;
+					while (!is_prime(k)) k++;
+					j++;
+					primes[j] = k;
+				}
+			}
+		}
+
+		output_arr[i] = 0;
+		while (num % primes[i] == 0L) {
+			output_arr[i]++;
+			num /= primes[i];
+		}
+	}
+
+	// After 1 millionth prime number,
+	// do not use memoization.
+	if (num_prime >= 1000000) {
+		long prime = primes[1000000 - 1];
+		for (i = 1000000; i < num_prime; i++) {
+			prime++;
+			while (!is_prime(prime)) prime++;
+			output_arr[i] = 0;
+			while (num % prime == 0L) {
+				output_arr[i]++;
+				num /= prime;
+			}
+		}
+	}
+}
