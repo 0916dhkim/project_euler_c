@@ -2,7 +2,8 @@
 #include <number_theory.h>
 
 int main() {
-	int factors[10];
+	// Only consider the first 20 prime numbers.
+	int factors[20];
 	long triangular = 0L;
 	long incr = 1L;
 	int num_factor = -1;
@@ -11,7 +12,7 @@ int main() {
 		factor(triangular, factors, 20);
 		num_factor = 1;
 		int i;
-		for (i = 0; i < 10; i++) {
+		for (i = 0; i < 20; i++) {
 			num_factor *= factors[i] + 1;
 		}
 		printf("%ld has %d factors\n", triangular, num_factor);
