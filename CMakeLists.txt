@@ -35,3 +35,6 @@ add_executable(prob_10 src/10/main.c)
 target_link_libraries(prob_10 number_theory)
 
 add_executable(prob_11 src/11/main.c)
+
+add_executable(prob_12 src/12/main.c)
+target_link_libraries(prob_12 number_theory)
