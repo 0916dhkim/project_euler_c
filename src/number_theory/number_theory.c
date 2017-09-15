@@ -79,6 +79,7 @@ void factor(long num, int *output_arr, int num_prime) {
 					while (!is_prime(k)) k++;
 					j++;
 					primes[j] = k;
+					known = j;
 				}
 			}
 		}
