@@ -42,3 +42,5 @@ target_link_libraries(prob_12 number_theory)
 add_executable(prob_31 src/31/main.c)
 
 add_executable(prob_48 src/48/main.c)
+
+add_executable(prob_19 src/19/main.c)
